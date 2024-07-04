@@ -27,7 +27,7 @@ contract CrowdFunding {
         uint256 _deadline, 
         string memory _image) public returns (uint256) {
 
-            Campaign storage campaign = campaings[numberOfCampaings];
+            Campaign storage campaign = campaigns[numberOfCampaings];
 
             require(campaign.deadline < block.timestamp, "The deadline should be a date in the future.");
 

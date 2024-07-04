@@ -1,4 +1,8 @@
 require("@matterlabs/hardhat-zksync-solc");
+require("dotenv").config();
+require("hardhat-deploy");
+
+const PRIVATE_KEY = process.env.PRIVATE_KEY || "oxkey";
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -12,17 +16,16 @@ module.exports = {
     },
   },
   networks: {
-    zksync_testnet: {
-      url: "https://zksync2-testnet.zksync.dev",
-      ethNetwork: "goerli",
-      chainId: 280,
-      zksync: true,
+    hardhat: {
+      chainId: 31337,
+      blockConfirmations: 1,
     },
-    zksync_mainnet: {
-      url: "https://zksync2-mainnet.zksync.io/",
-      ethNetwork: "mainnet",
-      chainId: 324,
-      zksync: true,
+    sepolia: {
+      url: 'https://rpc.ankr.com/eth_sepolia',
+        accounts: [PRIVATE_KEY],
+        chainId: 11155111,
+        blockConfirmations: 2,
+        saveDeployments: true,
     },
   },
   paths: {
@@ -33,6 +36,7 @@ module.exports = {
   },
   solidity: {
     version: "0.8.17",
+    defaultNetwork: 'sepolia',
     settings: {
       optimizer: {
         enabled: true,
