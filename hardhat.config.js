@@ -22,10 +22,10 @@ module.exports = {
     },
     sepolia: {
       url: 'https://rpc.ankr.com/eth_sepolia',
-        accounts: [PRIVATE_KEY],
-        chainId: 11155111,
-        blockConfirmations: 2,
-        saveDeployments: true,
+        accounts: [`0x${process.env.PRIVATE_KEY}`],
+        // chainId: 11155111,
+        // blockConfirmations: 2,
+        // saveDeployments: true,
     },
   },
   paths: {
@@ -44,4 +44,4 @@ module.exports = {
       },
     },
   },
-};
+}; //Updated
